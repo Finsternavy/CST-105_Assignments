@@ -6,9 +6,22 @@ public class Ex_1_11 {
 
 	public static void main(String[] args) {
 		
-		//I do not understand why this does not work
-		System.out.println(312,032,486.0 + (31,536,000 / 7.0) - (31,536,000 / 13.0) +(31,536,000 / 45.0));
+		double birthRateInSeconds = 7.0;
+        double deathRateInSeconds = 13.0;
+        double newImmigrantInSeconds = 45.0;
 
+        double currentPopulation = 312032486;
+
+        double secondsInYears = 60 * 60 * 24 * 365;
+
+        double numBirths = secondsInYears / birthRateInSeconds;
+        double numDeaths = secondsInYears / deathRateInSeconds;
+        double numImmigrants = secondsInYears / newImmigrantInSeconds;
+
+        for (int i = 1; i <= 5; i++) {
+            currentPopulation += numBirths + numImmigrants - numDeaths;
+            System.out.println("Year " + i + " = " + (int)currentPopulation);
+        }
 	}
 
 }
