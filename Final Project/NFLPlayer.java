@@ -11,7 +11,7 @@ public class NFLPlayer {
 	private String position;
 	private String experience;
 	private String team;
-	
+	private String highSchool;
 	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -83,6 +83,14 @@ public class NFLPlayer {
 	
 	public String getTeam() {
 		return team;
+	}
+	
+	public void setHighSchool(String highSchool) {
+		this.highSchool = highSchool;
+	}
+	
+	public String getHighSchool() {
+		return highSchool;
 	}
 	
 }
