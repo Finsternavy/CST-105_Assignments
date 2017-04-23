@@ -4,21 +4,26 @@ public class NFLPlayer {
 
 	private String lastName;
 	private String firstName;
-	private int age;
-	private int number;
-	private int weight;
 	private String college;
 	private String position;
 	private String experience;
 	private String team;
 	private String highSchool;
+	private int age;
+	private int number;
+	private int weight;
+	
+	NFLPlayer (String lastName, String firstName) {
+		this.lastName = lastName;
+		this.firstName = firstName;
+	}
 	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return this.lastName;
 	}
 	
 	public void setFirstName(String firstName) {
@@ -26,7 +31,7 @@ public class NFLPlayer {
 	}
 	
 	public String getFirstName() {
-		return firstName;
+		return this.firstName;
 	}
 	
 	public void setAge(int age) {
@@ -34,7 +39,7 @@ public class NFLPlayer {
 	}
 	
 	public int getAge() {
-		return age;
+		return this.age;
 	}
 	
 	public void setNumber(int number) {
@@ -42,7 +47,7 @@ public class NFLPlayer {
 	}
 	
 	public int getNumber() {
-		return number;
+		return this.number;
 	}
 	
 	public void setWeight(int weight) {
@@ -50,7 +55,7 @@ public class NFLPlayer {
 	}
 	
 	public int getWeight() {
-		return weight;
+		return this.weight;
 	}
 	
 	public void setCollege(String college) {
@@ -58,7 +63,7 @@ public class NFLPlayer {
 	}
 	
 	public String getCollege() {
-		return college;
+		return this.college;
 	}
 	
 	public void setPosition(String position) {
@@ -66,7 +71,7 @@ public class NFLPlayer {
 	}
 	
 	public String getPosition(){
-		return position;
+		return this.position;
 	}
 	
 	public void setExperience(String experience) {
@@ -74,7 +79,7 @@ public class NFLPlayer {
 	}
 	
 	public String getExperience() {
-		return experience;
+		return this.experience;
 	}
 	
 	public void setTeam(String team) {
@@ -82,7 +87,7 @@ public class NFLPlayer {
 	}
 	
 	public String getTeam() {
-		return team;
+		return this.team;
 	}
 	
 	public void setHighSchool(String highSchool) {
@@ -90,7 +95,7 @@ public class NFLPlayer {
 	}
 	
 	public String getHighSchool() {
-		return highSchool;
+		return this.highSchool;
 	}
 	
 }
