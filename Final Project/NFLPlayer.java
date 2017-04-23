@@ -13,6 +13,10 @@ public class NFLPlayer {
 	private int number;
 	private int weight;
 	
+	NFLPlayer () {
+		
+	}	
+	
 	NFLPlayer (String lastName, String firstName) {
 		this.lastName = lastName;
 		this.firstName = firstName;
