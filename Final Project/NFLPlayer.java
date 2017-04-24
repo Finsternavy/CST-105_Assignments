@@ -216,11 +216,11 @@ public class NFLPlayer {
 	}
 	
 	public void setFieldgoalsAttempted(int fieldgoalsAttempted) {
-		this.fieldgoalsAttempted = fieldgoalsAttempted;
+		this.fieldgoalAttempts = fieldgoalsAttempted;
 	}
 	
 	public int getFieldgoalsAttempted() {
-		return this.fieldgoalsAttempted;
+		return this.fieldgoalAttempts;
 	}
 	
 	public void setFieldgoalsMade(int fieldgoalsMade) {
@@ -232,11 +232,11 @@ public class NFLPlayer {
 	}
 	
 	public void setFieldgoalPercent(double fieldgoalPercent) {
-		this.fieldgoalPercent = fieldgoalsMade / fieldgoalsAttempted;
+		this.fieldgoalPercent = fieldgoalsMade / fieldgoalAttempts;
 	}
 	
 	public double getFieldgoalPercent() {
-		return fieldgoalsMade / fieldgoalsAttempted;
+		return fieldgoalsMade / fieldgoalAttempts;
 	}
 	
 	public void setPunts(int punts) {
