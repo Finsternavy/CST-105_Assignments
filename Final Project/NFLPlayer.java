@@ -2,34 +2,34 @@ package demo;
 
 public class NFLPlayer {
 
-	private String lastName;
-	private String firstName;
-	private String college;
-	private String position;
-	private int age;
-	private int number;
-	private int weight;
-	private int passingTouchdowns;
-	private int interceptionsThrown;
-	private int passAttempts;
-	private int passCompletions;
-	private int passingYards;
-	private int rushingYards;
-	private int rushingTouchdowns;
-	private int fumbles;
-	private int receivingYards;
-	private int receptions;
-	private int receivingTouchdowns;
-	private int tackles;
-	private int sacks;
-	private int interceptions;
-	private int fieldgoalsAttempted;
-	private int fieldgoalsMade;
-	private int punts;
-	private int puntYards;
-	private double puntAverage;
-	private double completionPercent;
-	private double fieldgoalPercent;
+	private String lastName = "lastName";
+	private String firstName = "firstName";
+	private String college = "college";
+	private String position = "position";
+	private int age = 18;
+	private int number = 00;
+	private int weight = 200;
+	private int passingTouchdowns = 10;
+	private int interceptionsThrown = 3;
+	private int passAttempts = 200;
+	private int passCompletions = 140;
+	private int passingYards = 1500;
+	private int rushingYards = 1000;
+	private int rushingTouchdowns = 10;
+	private int fumbles = 1;
+	private int receivingYards = 700;
+	private int receptions = 80;
+	private int receivingTouchdowns = 5;
+	private int tackles = 30;
+	private int sacks = 5;
+	private int interceptions = 3;
+	private int fieldgoalAttempts = 40;
+	private int fieldgoalsMade = 36;
+	private int punts = 30;
+	private int puntYards = 1200;
+	private double puntAverage = puntYards / punts;
+	private double completionPercent = passCompletions / passAttempts;
+	private double fieldgoalPercent = fieldgoalsMade / fieldgoalAttempts;
 	
 	public NFLPlayer () {
 	}	
