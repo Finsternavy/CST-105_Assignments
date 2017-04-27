@@ -2,8 +2,7 @@ package demo;
 
 public class NFLPlayer {
 
-	private String lastName = "lastName";
-	private String firstName = "firstName";
+	private String name = "name";
 	private String college = "college";
 	private String position = "position";
 	private int age = 18;
@@ -34,27 +33,20 @@ public class NFLPlayer {
 	public NFLPlayer () {
 	}	
 	
-	public NFLPlayer (String lastName, String firstName) {
-		this.lastName = lastName;
-		this.firstName = firstName;
+	public NFLPlayer (String position, String name) {
+		this.position = position;
+		this.name = name;
+	
 	}
 	
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getLastName() {
-		return this.lastName;
+	public String getName() {
+		return this.name;
 	}
-	
-	public void setFirstName(String firstName) {
-		this.lastName = firstName;
-	}
-	
-	public String getFirstName() {
-		return this.firstName;
-	}
-	
+		
 	public void setAge(int age) {
 		this.age = age;
 	}
