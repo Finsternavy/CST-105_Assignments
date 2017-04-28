@@ -18,7 +18,7 @@ public class TimeConversion_1 {
 			System.out.print("12am.");
 		} else if (hour == 12) {
 			System.out.print("12pm.");
-		} else if (hour >= 12) {
+		} else if (hour > 12) {
 			System.out.print(hour % 12 + "pm.");
 		} else {
 			System.out.print(hour % 12 + "am.");
