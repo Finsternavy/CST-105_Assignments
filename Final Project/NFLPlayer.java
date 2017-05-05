@@ -5,32 +5,40 @@ public class NFLPlayer {
 	private String name = "name";
 	private String college = "college";
 	private String position = "position";
-	private int age = 18;
+	private int age = 23;
 	private int number = 00;
 	private int weight = 200;
-	private int passingTouchdowns = 10;
-	private int interceptionsThrown = 3;
-	private int passAttempts = 200;
-	private int passCompletions = 140;
-	private int passingYards = 1500;
-	private int rushingYards = 1000;
-	private int rushingTouchdowns = 10;
-	private int fumbles = 1;
-	private int receivingYards = 700;
-	private int receptions = 80;
-	private int receivingTouchdowns = 5;
-	private int tackles = 30;
-	private int sacks = 5;
-	private int interceptions = 3;
-	private int fieldgoalAttempts = 40;
-	private int fieldgoalsMade = 36;
-	private int punts = 30;
-	private int puntYards = 1200;
-	private double puntAverage = puntYards / punts;
-	private double completionPercent = passCompletions / passAttempts;
-	private double fieldgoalPercent = fieldgoalsMade / fieldgoalAttempts;
+	private int passingTouchdowns;
+	private int interceptionsThrown;
+	private int passAttempts;
+	private int passCompletions;
+	private int passingYards;
+	private int rushingYards;
+	private int rushingAttempts;
+	private float yardsPerCarry = 0;
+	private int rushingTouchdowns;
+	private int fumbles;
+	private int receivingYards;
+	private int receptions;
+	private double yardsPerCatch;
+	private int receivingTouchdowns;
+	private int tackles;
+	private int sacks;
+	private int interceptions;
+	private int fieldgoalAttempts;
+	private int fieldgoalsMade;
+	private int punts;
+	private int puntYards;
+	private double puntAverage = 0;
+	private float completionPercent = 0;
+	private float fieldgoalPercent = 0;
 	
 	public NFLPlayer () {
+		
+	}
+	
+	
+	public NFLPlayer (String position, String name, int age, int weight) {
 	}	
 	
 	public NFLPlayer (String position, String name) {
@@ -119,12 +127,12 @@ public class NFLPlayer {
 		return this.passCompletions;
 	}
 	
-	public void setCompletionPercent(double completionPercent) {
-		this.completionPercent = passCompletions / passAttempts;
+	public void setCompletionPercent(float completionPercent) {
+		this.completionPercent = (passCompletions * 100 / passAttempts);
 	}
 	
-	public double getCompletionPercent() {
-		return passCompletions / passAttempts;
+	public float getCompletionPercent() {
+		return completionPercent;
 	}
 	
 	public void setRushingYards(int rushingYards) {
@@ -133,6 +141,22 @@ public class NFLPlayer {
 	
 	public int getRushingYards() {
 		return this.rushingYards;
+	}
+	
+	public void setRushingAttempts(int rushingAttempts) {
+		this.rushingAttempts = rushingAttempts;
+	}
+	
+	public int getRushingAttempts() {
+		return rushingAttempts;
+	}
+	
+	public void setYardsPerCarry(float yardsPerCarry) {
+		this.yardsPerCarry = yardsPerCarry;
+	}
+	
+	public float getYardsPerCarry() {
+		return yardsPerCarry;
 	}
 	
 	public void setPassingYards(int passingYards) {
@@ -175,6 +199,14 @@ public class NFLPlayer {
 		return this.receptions;
 	}
 	
+	public void setYardsPerCatch(double yardsPerCatch) {
+		this.yardsPerCatch = yardsPerCatch;
+	}
+	
+	public double getYardsPerCatch () {
+		return yardsPerCatch;
+	}
+	
 	public void setReceivingTouchdowns(int receivingTouchdowns) {
 		this.receivingTouchdowns = receivingTouchdowns;
 	}
@@ -207,11 +239,11 @@ public class NFLPlayer {
 		return this.interceptions;
 	}
 	
-	public void setFieldgoalsAttempted(int fieldgoalsAttempted) {
+	public void setFieldgoalAttempts(int fieldgoalsAttempted) {
 		this.fieldgoalAttempts = fieldgoalsAttempted;
 	}
 	
-	public int getFieldgoalsAttempted() {
+	public int getFieldgoalAttempts() {
 		return this.fieldgoalAttempts;
 	}
 	
@@ -223,12 +255,12 @@ public class NFLPlayer {
 		return this.fieldgoalsMade;
 	}
 	
-	public void setFieldgoalPercent(double fieldgoalPercent) {
-		this.fieldgoalPercent = fieldgoalsMade / fieldgoalAttempts;
+	public void setFieldgoalPercent(float fieldgoalPercent) {
+		this.fieldgoalPercent = fieldgoalsMade * 100 / fieldgoalAttempts;
 	}
 	
-	public double getFieldgoalPercent() {
-		return fieldgoalsMade / fieldgoalAttempts;
+	public float getFieldgoalPercent() {
+		return fieldgoalPercent;
 	}
 	
 	public void setPunts(int punts) {
@@ -252,7 +284,7 @@ public class NFLPlayer {
 	}
 	
 	public double getPuntAverage() {
-		return puntYards / punts;
+		return puntAverage;
 	}
 	
 }
