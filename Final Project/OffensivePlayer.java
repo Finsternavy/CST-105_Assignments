@@ -35,8 +35,10 @@ public class OffensivePlayer extends NFLPlayer{
 	public OffensivePlayer(String position, String name) {
 		this.position = position;
 		this.name = name;
-	
 	}
+	
+
+	
 	
 	public void setPassingTouchdowns(int passingTouchdowns) {
 		this.passingTouchdowns = passingTouchdowns;
@@ -204,6 +206,17 @@ public class OffensivePlayer extends NFLPlayer{
 	
 	public double getPuntAverage() {
 		return puntAverage;
+	}
+
+	@Override
+	public String celebrate() {
+		int c = (int)(Math.random() * 7);
+		if (c > 4){
+			return " This offense just got a LOT better!";
+		}
+		return CELEBRATIONS[c];
+		
+		
 	}
 	
 }

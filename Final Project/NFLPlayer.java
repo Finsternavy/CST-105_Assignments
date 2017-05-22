@@ -1,12 +1,15 @@
 package demo;
 
-abstract class NFLPlayer {
+abstract class NFLPlayer implements Celebrator {
 
 	protected String name = "name";
 	protected String position = "position";
 	protected int age = 23;
 	protected int number = 00;
 	protected int weight = 200;
+	boolean isDrafted = false;
+	
+	
 	
 	public NFLPlayer () {
 		
@@ -21,6 +24,10 @@ abstract class NFLPlayer {
 		this.name = name;
 	
 	}
+	
+	public static final String[] CELEBRATIONS = {" Dang! Do I have to play for them?",
+			" I can't believe I got drafted!", " Casually accepts his fate.", " Sobs uncontrollably.",
+			" Raises hands to God in thanks!"};
 	
 	public void setName(String name) {
 		this.name = name;
@@ -60,6 +67,17 @@ abstract class NFLPlayer {
 	
 	public String getPosition(){
 		return this.position;
+	}
+	
+	public void isDrafted(boolean isDrafted){
+		this.isDrafted= true;
+		System.out.println(this.getName() + celebrate());
+		
+	}
+	
+	public String celebrate() {
+		String playerDrafted = "Yay!!!";
+		return playerDrafted;
 	}
 	
 }

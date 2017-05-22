@@ -108,4 +108,13 @@ public class DefensivePlayer extends NFLPlayer {
 		return this.fumbleRecoveries;
 	}
 	
+	@Override
+	public String celebrate() {
+		int c = (int)(Math.random() * 5);
+		if (c > 4){
+			return " This defense just got a LOT better!";
+		}
+		return CELEBRATIONS[c];
+	}
+	
 }
