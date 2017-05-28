@@ -14,18 +14,30 @@ public class DefensivePlayer extends NFLPlayer {
 	private int fumbleRecoveries;
 	
 	
-	public DefensivePlayer() {
+	public DefensivePlayer(String name, String position, int age, int number, int weight,
+			int soloTackles, int assistedTackles, int totalTackles, int sacks, int interceptions,
+			int safeties, int passDeflections, int defensiveTDs, int forcedFumbles, 
+			int fumbleRecoveries) {
+		this.setName(name);
+		this.setPosition(position);
+		this.setAge(age);
+		this.setNumber(number);
+		this.setWeight(weight);
+		this.setSoloTackles(soloTackles);
+		this.setAssistedTackles(assistedTackles);
+		this.setTotalTackles(totalTackles);
+		this.setSacks(sacks);
+		this.setInterceptions(interceptions);
+		this.setSafeties(safeties);
+		this.setPassDeflections(passDeflections);
+		this.setDefensiveTDs(defensiveTDs);
+		this.setForcedFumbles(forcedFumbles);
+		this.setFumbleRecoveries(fumbleRecoveries);
 		
 	}
 	
-	public DefensivePlayer(String position, String name, int age, int weight) {
-	
-	}	
-	
-	public DefensivePlayer (String position, String name) {
-		this.position = position;
-		this.name = name;
-	
+	public DefensivePlayer() {
+		
 	}
 	
 	public void setSoloTackles(int tackles) {

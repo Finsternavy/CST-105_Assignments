@@ -2,350 +2,177 @@ package demo;
 
 import java.util.ArrayList;
 
+import javax.swing.table.DefaultTableModel;
+
 public class PlayerManager {
 
- 
-	
-	PlayerManager() {
+    PlayerManager() {
+    
+    }
 
-		//used for testing purposes.
-
-		System.out.println("Pos\tName\t\t#\tAtt\tComp\tPerc\tTDs\tInt\tYds");
-
-		System.out.println("-------------------------------------------------"
-
-				+ "---------------------------");
-
-		NFLPlayer[] undraftedPlayers = createPlayer(60);
-		NFLPlayer[] defensivePlayers = createDefensivePlayer(42);
-		
-
-		
-	}
-
-		static ArrayList <NFLPlayer> myRoster = new ArrayList();
-
-		// method that creates x amount of players based on user input when called
-		public static NFLPlayer[] createPlayer(int createPlayer) {
-		OffensivePlayer[] myPlayers = new OffensivePlayer[60];
-		for (int i = 0; i < myPlayers.length; i++) {
-			myPlayers[i] = new OffensivePlayer();
-			myPlayers[i] .setNumber(i+1);
-			myPlayers[i] .setName("First Last");
-
-
-		//Assigns players in index 0-5 to the QB position. 
-		if (i < 6) {
-			//int assigned to generate random pass attempts
-			int randomNumber1 = 100 + (int)(Math.random()*150);
-			//int assigned to generate random completions
-			int randomNumber2 = 100 + (int)(Math.random()*100);
-
-			//Makes sure attempts is always more that completions
-				if (randomNumber1 < randomNumber2) {
-			int temp = randomNumber1;
-			randomNumber1 = randomNumber2;
-			randomNumber2 = temp;
-			}
-			//used to compute completion percentage
-			float compPerc = (randomNumber2 * 100 / randomNumber1);
-			//generates random passing touchdown stat.
-			int passingTouchdowns = 5 + (int)(Math.random() * 20);
-			//generates random passing interception stat.
-			int interceptions = 0 + (int)(Math.random() * 10);
-			//generates random passing yards stat.
-			int passYards = 1000 + (int)(Math.random() * 5000);
-	
-			myPlayers[i].setPosition("QB");
-			myPlayers[i].setInterceptionsThrown(interceptions);
-			myPlayers[i].setPassAttempts((int)randomNumber1);
-			myPlayers[i].setPassCompletions((int)randomNumber2 - interceptions);
-			myPlayers[i].setCompletionPercent(compPerc);
-			myPlayers[i].setPassingTouchdowns(passingTouchdowns);
-			myPlayers[i].setPassingYards(passYards);
-			myRoster.add(myPlayers[i]);
-
-		//Assigns players in index 5-11 to the RB position
-		}else if (i < 12) {
-			myPlayers[i].setPosition("RB");
-			//generates random rushing yards stat. 
-			int rushingYards = 700 + (int)(Math.random() * 1000); 
-			//int assigned to generate random rushing attempts 
-			int rushAttempts = 100 + (int)(Math.random() * 100); 
-			//used to compute yards per carry 
-			float yardsPerCarry= (rushingYards / rushAttempts); 
-			//generates random rushing touchdown stat. 
-			int rushTD = 5 + (int)(Math.random() * 20);
-			//generates random fumbles
-			int fumbles = (int)(Math.random() * 10); 
-	
-			myPlayers[i].setRushingAttempts(rushAttempts); 
-			myPlayers[i].setRushingYards(rushingYards); 
-			myPlayers[i].setYardsPerCarry(yardsPerCarry); 
-			myPlayers[i].setRushingTouchdowns(rushTD); 
-			myPlayers[i].setFumbles(fumbles); 
-			//Set weight between 180 - 279.
-			myPlayers[i].setWeight(180 + (int)(Math.random() * 100));
-			myRoster.add(myPlayers[i]);
-
-		//Assigns players in index 12-17 to the FB position 
-		}else if (i < 18) { 
-			myPlayers[i].setPosition("FB"); 
-			//generates random rushing yards stat. 
-			int rushingYards = 200 + (int)(Math.random() * 1000); 
-			//int assigned to generate random rushing attempts 
-			int rushAttempts = 50 + (int)(Math.random() * 100); 
-			//used to compute yards per carry 
-			float yardsPerCarry= (rushingYards / rushAttempts); 
-			//generates random rushing touchdown stat. 
-			int rushTD = (int)(Math.random() * 20);
-			//generates random fumbles
-			int fumbles = (int)(Math.random() * 10); 
-	
-			myPlayers[i].setRushingAttempts(rushAttempts); 
-			myPlayers[i].setRushingYards(rushingYards); 
-			myPlayers[i].setYardsPerCarry(yardsPerCarry); 
-			myPlayers[i].setRushingTouchdowns(rushTD); 
-			myPlayers[i].setFumbles(fumbles); 
-			//Set weight between 180 - 259.
-			myPlayers[i].setWeight(225 + (int)(Math.random() * 100));
-			myRoster.add(myPlayers[i]);
-	
-			//Assigns players in index 18-23 to the WR position 
-			}else if (i < 24) { 
-	
-			myPlayers[i].setPosition("WR"); 
-			//generates random receiving yards stat. 
-			int receivingYards = 700 + (int)(Math.random() * 1000); 
-			//int assigned to generate random rushing attempts 
-			int receptions = 60 + (int)(Math.random() * 100); 
-			//used to compute yards per catch 
-			float yardsPerCatch= (receivingYards / receptions); 
-			//generates random receiving touchdown stat. 
-			int receivingTD = (int)(Math.random() * 20);
-	
-			//generates random fumbles
-			int fumbles = (int)(Math.random() * 3); 
-	
-			myPlayers[i].setReceptions(receptions); 
-			myPlayers[i].setReceivingYards(receivingYards); 
-			myPlayers[i].setYardsPerCatch(yardsPerCatch); 
-			myPlayers[i].setReceivingTouchdowns(receivingTD); 
-			myPlayers[i].setFumbles(fumbles); 
-	
-			//Set weight between 160 - 224.
-	
-			myPlayers[i].setWeight(160 + (int)(Math.random() * 65));
-			myRoster.add(myPlayers[i]);
-
-		//Assigns players in index 24-29 to the TE position 
-		}else if (i < 30) { 
-
-			myPlayers[i].setPosition("TE"); 
-			//generates random receiving yards stat. 
-			int receivingYards = 300 + (int)(Math.random() * 700); 
-			//int assigned to generate random rushing attempts 
-			int receptions = 20 + (int)(Math.random() * 80); 
-			//used to compute yards per catch 
-			float yardsPerCatch= (receivingYards / receptions); 
-			//generates random receiving touchdown stat. 
-			int receivingTD = (int)(Math.random() * 20);
-			//generates random fumbles
-			int fumbles = (int)(Math.random() * 3); 
-	
-			myPlayers[i].setReceptions(receptions); 
-			myPlayers[i].setReceivingYards(receivingYards); 
-			myPlayers[i].setYardsPerCatch(yardsPerCatch); 
-			myPlayers[i].setReceivingTouchdowns(receivingTD); 
-			myPlayers[i].setFumbles(fumbles); 
-			//Set weight between 180 - 279.
-			myPlayers[i].setWeight(180 + (int)(Math.random() * 100));
-			myRoster.add(myPlayers[i]);
-
-		//Assigns players in index 30-35 to the T position 
-		}else if (i < 36) { 
-
-			myPlayers[i].setPosition("T"); 
-			//Sets weight between 280 - 379
-			myPlayers[i].setWeight(280 + (int)(Math.random() * 100));
-			myRoster.add(myPlayers[i]);
-
-		//Assigns players in index 36-41 to the G position 
-		}else if (i < 42) { 
-
-			myPlayers[i].setPosition("G"); 
-			//Sets weight between 280 - 379
-			myPlayers[i].setWeight(280 + (int)(Math.random() * 100));
-			myRoster.add(myPlayers[i]);
-
-		//Assigns players in index 42-47 to the C position 
-		}else if (i < 48){ 
-
-			myPlayers[i].setPosition("C"); 
-			//Sets weight between 280 - 379
-			myPlayers[i].setWeight(280 + (int)(Math.random() * 100));
-			myRoster.add(myPlayers[i]);
-		
-		//Assigns players in index 90-95 to the K position 
-		}else if (i < 54) { 
-
-			myPlayers[i].setPosition("K"); 
-			int fieldgoalAttempts = (10 + (int)(Math.random() * 30));
-			int fieldgoalsMade = fieldgoalAttempts - (int)(Math.random() * 10);
-			float fieldgoalPercent = (fieldgoalsMade * 100f) / (float)fieldgoalAttempts;
-			myPlayers[i].setFieldgoalAttempts(fieldgoalAttempts); 
-			myPlayers[i].setFieldgoalsMade(fieldgoalsMade);
-			myPlayers[i].setFieldgoalPercent(fieldgoalPercent);
-			//Sets weight between 150-249
-			myPlayers[i].setWeight(150 + (int)(Math.random() * 100));
-			myRoster.add(myPlayers[i]);
-			
-		//Assigns players in index 96+ to the P position 
-		}else
-	
-			myPlayers[i].setPosition("P"); 
-			int punts = (10 + (int)(Math.random() * 50));
-			int puntYards = punts * (35 + (int)(Math.random() * 20));
-			double puntAverage = (double)puntYards / (double)punts;
-			myPlayers[i].setPunts(punts);
-			myPlayers[i].setPuntYards(puntYards);
-			myPlayers[i].setPuntAverage(puntAverage);
-			//Sets weight between 150-249
-			myPlayers[i].setWeight(150 + (int)(Math.random() * 100));
-			myRoster.add(myPlayers[i]);
-		
-		System.out.println(myPlayers[i].getPosition() + "\t" + myPlayers[i].getName() 
-				+ "\t" + myPlayers[i].getNumber() + "\t" + myPlayers[i].getPassAttempts()
-				+ "\t" + myPlayers[i].getPassCompletions() + "\t" 
-				+ myPlayers[i].getCompletionPercent() + "%" + "\t" 
-				+ myPlayers[i].getPassingTouchdowns() + "\t" 
-				+ myPlayers[i].getInterceptionsThrown() + "\t" 
-				+ myPlayers[i].getPassingYards());
-		
-		
-		}
-		
-		return myPlayers;
-		
-		}
-
-		public static NFLPlayer[] createDefensivePlayer(int createDefPlayer) {
-		DefensivePlayer[] myDefensivePlayers = new DefensivePlayer[42];
-		for (int d = 0; d < myDefensivePlayers.length; d++) {
-			myDefensivePlayers[d] = new DefensivePlayer();
-			myDefensivePlayers[d] .setNumber(d+1);
-			myDefensivePlayers[d] .setName("First Last");
-
-		
-		
-		//Assigns players in index 48-53 to the DE position 
-		if (d < 6) { 
-
-			myDefensivePlayers[d].setPosition("DE"); 
-			myDefensivePlayers[d].setTotalTackles(20 + (int)(Math.random() * 80)); 
-			myDefensivePlayers[d].setSacks(1 + (int)(Math.random() * 20));
-			//Sets weight between 225 - 324
-			myDefensivePlayers[d].setWeight(225 + (int)(Math.random() * 100));
-			myRoster.add(myDefensivePlayers[d]);
-
-		//Assigns players in index 54-59 to the DT position 
-		}else if (d < 12) { 
-
-			myDefensivePlayers[d].setPosition("DT"); 
-			myDefensivePlayers[d].setTotalTackles(20 + (int)(Math.random() * 80));
-			myDefensivePlayers[d].setSacks(1 + (int)(Math.random() * 20));
-			//Sets weight between 225 - 324
-			myDefensivePlayers[d].setWeight(225 + (int)(Math.random() * 100));
-			myRoster.add(myDefensivePlayers[d]);
-
-		//Assigns players in index 60-65 to the OLB position 
-		}else if (d < 18) { 
-	
-			myDefensivePlayers[d].setPosition("OLB"); 
-			myDefensivePlayers[d].setInterceptions((int)(Math.random() * 5));
-			myDefensivePlayers[d].setTotalTackles(20 + (int)(Math.random() * 100));
-			myDefensivePlayers[d].setSacks(1 + (int)(Math.random() * 10));
-			//Sets weight between 225 - 374
-			myDefensivePlayers[d].setWeight(225 + (int)(Math.random() * 50));
-			myRoster.add(myDefensivePlayers[d]);
-
-		//Assigns players in index 66-71 to the MLB position 
-		}else if (d < 24) { 
-
-			myDefensivePlayers[d].setPosition("MLB"); 
-			myDefensivePlayers[d].setInterceptions((int)(Math.random() * 5));
-			myDefensivePlayers[d].setTotalTackles(20 + (int)(Math.random() * 100));
-			myDefensivePlayers[d].setSacks(1 + (int)(Math.random() * 10));
-			//Sets weight between 225 - 274
-			myDefensivePlayers[d].setWeight(225 + (int)(Math.random() * 50));
-			myRoster.add(myDefensivePlayers[d]);
-
-		//Assigns players in index 72-77 to the CB position 
-		}else if (d < 30) { 
-
-			myDefensivePlayers[d].setPosition("CB"); 
-			myDefensivePlayers[d].setInterceptions((int)(Math.random() * 10));
-			myDefensivePlayers[d].setTotalTackles(20 + (int)(Math.random() * 80));
-			myDefensivePlayers[d].setSacks((int)(Math.random() * 5));
-			//Sets weight between 160 - 224
-			myDefensivePlayers[d].setWeight(160 + (int)(Math.random() * 65));
-			myRoster.add(myDefensivePlayers[d]);
-
-		//Assigns players in index 78-83 to the FS position 
-		}else if (d < 36) { 
-
-			myDefensivePlayers[d].setPosition("FS"); 
-			myDefensivePlayers[d].setInterceptions((int)(Math.random() * 10));
-			myDefensivePlayers[d].setTotalTackles(20 + (int)(Math.random() * 80)); 
-			myDefensivePlayers[d].setSacks((int)(Math.random() * 5));
-			//Sets weight between 180 - 249
-			myDefensivePlayers[d].setWeight(180 + (int)(Math.random() * 70));
-			myRoster.add(myDefensivePlayers[d]);
-
-		//Assigns players in index 84-89 to the SS position 
-		}else if (d < 42) 
-	
-			myDefensivePlayers[d].setPosition("SS"); 
-			myDefensivePlayers[d].setInterceptions((int)(Math.random() * 10));
-			myDefensivePlayers[d].setTotalTackles(20 + (int)(Math.random() * 80));
-			myDefensivePlayers[d].setSacks((int)(Math.random() * 5));
-			//Sets weight between 180 - 249
-			myDefensivePlayers[d].setWeight(180 + (int)(Math.random() * 70));
-			myRoster.add(myDefensivePlayers[d]);
-		
-		System.out.println(myDefensivePlayers[d].getPosition() + "\t" + myDefensivePlayers[d].getName() 
-				+ "\t" + myDefensivePlayers[d].getNumber());
-		
+    // Create ArrayList for available players 
+    public ArrayList < NFLPlayer > availablePlayers = new ArrayList < NFLPlayer > ();
+    
+    // Create ArrayList for Offensive players 
+    public ArrayList < OffensivePlayer > offensivePlayers = new ArrayList < OffensivePlayer > ();
+    
+    // Create ArrayList for Defensive Players 
+    public ArrayList < DefensivePlayer > defensivePlayers = new ArrayList < DefensivePlayer > (); 
+    
+    // Create ArrayList for my current roster 
+    public ArrayList < Object > currentRoster = new ArrayList < Object > (); 
+    
+    String [] col = {"Name", "Position", "Age", "Number", "Weight", "Pass TDs", "INTs", "Pass Attempts", "Completions", "Comp %", "Pass Yards", "Rush Yards", 
+    		"Rush Attempts", "YrdsPerCarry", "Rush TDs", "Fumbles", "Receiving Yards", "YrdsPerCatch", "Receiving TDs"};
+    
+    String [] col2 = {"Name", "Position", "Age", "Number", "Weight", "Solo Tkls", "Assist Tkls", "Total Tkls", "Sacks", "INT", "Safety", "Pass Deflect", 
+    		"Def TDs", "Forced Fumbles", "Fumble Recoveries"};
+    
+    String [] col3 = {"Name", "Position", "Age", "Number", "Weight"};
+    
+    public DefaultTableModel tableModel1 = new DefaultTableModel (col, 0);
+    public DefaultTableModel tableModel2 = new DefaultTableModel (col2, 0);
+    public DefaultTableModel tableModel3 = new DefaultTableModel (col3, 0);
+    public DefaultTableModel tableModel4 = new DefaultTableModel (col3, 0);
+    	
+    
+    
+    public DefaultTableModel getModel(){
+    	return tableModel1;
+    }
+    
+    public DefaultTableModel getModel2(){
+    	return tableModel2;
+    }
+    
+    public DefaultTableModel getModel3(){
+    	return tableModel3;
+    }
+    
+    public DefaultTableModel getModel4() {
+    	return tableModel4;
+    }
+    
+    public String[] getCol(){
+    	return col;
+    }
 
 
-		
-		}
+    public void createPlayers() {
+        //create offensive Players for draft.
+        OffensivePlayer offensivePlayer1 = new OffensivePlayer("Tom Brady", "QB", 39, 12, 225, 28, 2, 432, 291, 67.4, 3554, 0, 0, 0.0, 0, 0, 0, 0, 0.0, 0);
+        OffensivePlayer offensivePlayer2 = new OffensivePlayer("Kurt Warner", "QB", 45, 13, 214, 41, 13, 499, 325, 65.1, 4353, 0, 0, 0.0, 0, 0, 0, 0, 0.0, 0);
+        OffensivePlayer offensivePlayer3 = new OffensivePlayer("Aaron Rodgers", "QB", 33, 12, 225, 40, 7, 610, 401, 65.7, 4428, 0, 0, 0.0, 0, 0, 0, 0, 0.0, 0);
+        OffensivePlayer offensivePlayer4 = new OffensivePlayer("Ezekial Elliot", "RB", 21, 21, 225, 0, 0, 0, 0, 0, 0, 1631, 322, 5.1, 15, 5, 363, 32, 11.3, 1);
+        OffensivePlayer offensivePlayer5 = new OffensivePlayer("Devonta Freeman", "RB", 25, 24, 206, 0, 0, 0, 0, 0, 0, 1079, 227, 4.8, 11, 1, 462, 54, 8.6, 2);
+        OffensivePlayer offensivePlayer6 = new OffensivePlayer("Julian Edelman", "WR", 31, 11, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1106, 98, 11.3, 3);
+        OffensivePlayer offensivePlayer7 = new OffensivePlayer("Julio Jones", "WR", 28, 11, 220, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1409, 83, 17.0, 6);
+        OffensivePlayer offensivePlayer8 = new OffensivePlayer("Larry Fitzgerald", "WR", 33, 11, 218, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1023, 107, 9.6, 6);
+        OffensivePlayer offensivePlayer9 = new OffensivePlayer("Jason Witten", "TE", 35, 82, 263, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 673, 69, 9.8, 3);
+        OffensivePlayer offensivePlayer10 = new OffensivePlayer("Jimmy Graham", "TE", 30, 88, 265, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 923, 65, 14.2, 6);
+        
+        //add offensive players to offensivePlayers <>.
+        offensivePlayers.add(offensivePlayer1);
+        offensivePlayers.add(offensivePlayer2);
+        offensivePlayers.add(offensivePlayer3);
+        offensivePlayers.add(offensivePlayer4);
+        offensivePlayers.add(offensivePlayer5);
+        offensivePlayers.add(offensivePlayer6);
+        offensivePlayers.add(offensivePlayer7);
+        offensivePlayers.add(offensivePlayer8);
+        offensivePlayers.add(offensivePlayer9);
+        offensivePlayers.add(offensivePlayer10);
+        
+        
+        for (int i = 0; i < offensivePlayers.size(); i++) {
+        	String name = offensivePlayers.get(i).getName();
+        	String position = offensivePlayers.get(i).getPosition();
+        	int age = offensivePlayers.get(i).getAge();
+        	int number = offensivePlayers.get(i).getNumber();
+        	int weight = offensivePlayers.get(i).getWeight();
+        	int passingTDs = offensivePlayers.get(i).getPassingTouchdowns();
+        	int interceptionsThrown = offensivePlayers.get(i).getInterceptionsThrown();
+        	int passingAttempts = offensivePlayers.get(i).getPassAttempts();
+        	int passCompletions = offensivePlayers.get(i).getPassCompletions();
+        	double completionPercent = offensivePlayers.get(i).getCompletionPercent();
+        	int passingYards = offensivePlayers.get(i).getPassingYards();
+        	int rushYards = offensivePlayers.get(i).getRushingYards();
+        	int rushAttempts = offensivePlayers.get(i).getRushingAttempts();
+        	double yardsPerCarry = offensivePlayers.get(i).getYardsPerCarry();
+        	int rushTDs = offensivePlayers.get(i).getRushingTouchdowns();
+        	int fumbles = offensivePlayers.get(i).getFumbles();
+        	int receivingYards = offensivePlayers.get(i).getReceivingYards();
+        	int receptions = offensivePlayers.get(i).getReceptions();
+        	double yardsPerCatch = offensivePlayers.get(i).getYardsPerCatch();
+        	int receivingTDs = offensivePlayers.get(i).getReceivingTouchdowns();
 
-		return myDefensivePlayers;
-		
-		}
-		
-		
-		
-		
-		
-		public static void main(String [] args){
-			
-			NFLPlayer [] roster = createPlayer(60);
-			NFLPlayer [] DRoster = createDefensivePlayer(42);
-			
-			roster[1].isDrafted(true);
-			
+        	
+        	Object [] data = {name, position, age, number, weight, passingTDs, interceptionsThrown, passingAttempts, passCompletions, completionPercent, 
+        			passingYards, rushYards, rushAttempts, yardsPerCarry, rushTDs, fumbles, receivingYards, receptions, yardsPerCatch, receivingTDs};
+        	Object [] data3 = {name, position, age, number, weight};
+        	
+        	tableModel1.addRow(data);
+        	tableModel3.addRow(data3);
+        	
+        }
+        
+        //create defensive Players for draft.
+        DefensivePlayer defensivePlayer1 = new DefensivePlayer("Trey Flowers", "DE", 23, 98, 265, 1, 22, 23, 7, 0, 0, 1, 0, 0, 0);
+        DefensivePlayer defensivePlayer2 = new DefensivePlayer("DeForest Buckner", "DE", 23, 99, 300, 13, 30, 43, 6, 0, 0, 1, 0, 0, 0);
+        DefensivePlayer defensivePlayer3 = new DefensivePlayer("Ndamukong Suh", "DT", 30, 93, 305, 40, 32, 72, 5, 0, 0, 6, 0, 0, 0);
+        DefensivePlayer defensivePlayer4 = new DefensivePlayer("Khalil Mack", "DE", 26, 52, 250, 54, 19, 73, 11, 1, 0, 3, 1, 5, 3);
+        DefensivePlayer defensivePlayer5 = new DefensivePlayer("Bobby Wagner", "LB", 26, 54, 245, 85, 82, 167, 4, 1, 0, 4, 0, 0, 1);
+        DefensivePlayer defensivePlayer6 = new DefensivePlayer("Alec Ogletree", "LB", 25, 52, 245, 98, 38, 136, 0, 2, 0, 13, 0, 1, 1);
+        DefensivePlayer defensivePlayer7 = new DefensivePlayer("Daryl Worley", "CB", 26, 26, 205, 57, 24, 88, 0, 1, 0, 9, 0, 0, 0);
+        DefensivePlayer defensivePlayer8 = new DefensivePlayer("DeShawn Shead", "CB", 35, 27, 212, 1, 22, 23, 7, 0, 0, 14, 0, 1, 0);
+        DefensivePlayer defensivePlayer9 = new DefensivePlayer("Landon COllins", "S", 23, 21, 225, 100, 25, 125, 4, 5, 0, 18, 1, 0, 1);
+        DefensivePlayer defensivePlayer10 = new DefensivePlayer("Harrison Smith", "S", 28, 22, 214, 69, 22, 91, 2, 0, 0, 0, 0, 0, 1);
+        
+        
+        //add defensive players to defensivePlayers <>.
+        defensivePlayers.add(defensivePlayer1);
+        defensivePlayers.add(defensivePlayer2);
+        defensivePlayers.add(defensivePlayer3);
+        defensivePlayers.add(defensivePlayer4);
+        defensivePlayers.add(defensivePlayer5);
+        defensivePlayers.add(defensivePlayer6);
+        defensivePlayers.add(defensivePlayer7);
+        defensivePlayers.add(defensivePlayer8);
+        defensivePlayers.add(defensivePlayer9);
+        defensivePlayers.add(defensivePlayer10);
+        
+        for (int i = 0; i < defensivePlayers.size(); i ++) {
+        	String name = defensivePlayers.get(i).getName();
+        	String position = defensivePlayers.get(i).getPosition();
+        	int age = defensivePlayers.get(i).getAge();
+        	int number = defensivePlayers.get(i).getNumber();
+        	int weight = defensivePlayers.get(i).getWeight();
+        	int soloTackles = defensivePlayers.get(i).getSoloTackles();
+        	int assistedTackles = defensivePlayers.get(i).getAssistedTackles();
+        	int totalTackles = defensivePlayers.get(i).getTotalTackles();
+        	int sacks = defensivePlayers.get(i).getSacks();
+        	int interceptions = defensivePlayers.get(i).getInterceptions();
+        	int safety = defensivePlayers.get(i).getSafeties();
+        	int passDeflects = defensivePlayers.get(i).getPassDeflections();
+        	int defensiveTDs = defensivePlayers.get(i).getDefensiveTDs();
+        	int forcedFumbles = defensivePlayers.get(i).getForcedFumbles();
+        	int fumbleRecoveries = defensivePlayers.get(i).getFumbleRecoveries();
+        
+        	
+        	Object [] data2 = {name, position, age, number, weight, soloTackles, assistedTackles, totalTackles, sacks, interceptions, safety, passDeflects, 
+        			defensiveTDs, forcedFumbles, fumbleRecoveries};
+        	Object [] data3 = {name, position, age, number, weight};
+        	
+        	tableModel2.addRow(data2);
+        	tableModel3.addRow(data3);
+        }
+        	
 
-			
-			System.out.println(myRoster.toString());
+            	
 
-			
-		}
-		
-		
-		
-		}
-		
-
+        
+        
+        }
+        
+    }
 		

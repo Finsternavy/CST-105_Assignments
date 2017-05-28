@@ -2,32 +2,29 @@ package demo;
 
 abstract class NFLPlayer implements Celebrator {
 
-	protected String name = "name";
-	protected String position = "position";
-	protected int age = 23;
-	protected int number = 00;
-	protected int weight = 200;
+	protected String name;
+	protected String position;
+	protected int age;
+	protected int number;
+	protected int weight;
 	boolean isDrafted = false;
 	
 	
 	
-	public NFLPlayer () {
-		
+	public NFLPlayer (String name, String position, int age, int number, int weight) {
+
 	}
 	
-	public NFLPlayer (String position, String name, int age, int weight) {
-	
-	}	
-	
-	public NFLPlayer (String position, String name) {
-		this.position = position;
-		this.name = name;
-	
+	public NFLPlayer() {
+		
 	}
 	
 	public static final String[] CELEBRATIONS = {" Dang! Do I have to play for them?",
 			" I can't believe I got drafted!", " Casually accepts his fate.", " Sobs uncontrollably.",
 			" Raises hands to God in thanks!"};
+	
+	public static final String[] OFFENSIVEPOSITION = {"QB", "RB", "FB", "WR", "TE"};
+	public static final String[] DEFENSIVEPOSITION = {"DE", "DT", "LB", "CB", "S"};
 	
 	public void setName(String name) {
 		this.name = name;
@@ -61,12 +58,13 @@ abstract class NFLPlayer implements Celebrator {
 		return this.weight;
 	}
 	
-	public void setPosition(String position) {
-		this.position = position;
-	}
 	
 	public String getPosition(){
 		return this.position;
+	}
+	
+	public void setPosition(String position) {
+		this.position = position;
 	}
 	
 	public void isDrafted(boolean isDrafted){
@@ -78,6 +76,11 @@ abstract class NFLPlayer implements Celebrator {
 	public String celebrate() {
 		String playerDrafted = "Yay!!!";
 		return playerDrafted;
+	}
+
+	public void getPOSITION(int i) {
+		return;
+		
 	}
 	
 }

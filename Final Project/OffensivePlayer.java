@@ -1,45 +1,60 @@
 package demo;
 
+import java.util.Random;
+
 public class OffensivePlayer extends NFLPlayer{
 
 	private int passingTouchdowns;
 	private int interceptionsThrown;
 	private int passAttempts;
 	private int passCompletions;
-	private float completionPercent = 0;
+	private double completionPercent = 0;
 	private int passingYards;
 	private int rushingYards;
 	private int rushingAttempts;
-	private float yardsPerCarry = 0;
+	private double yardsPerCarry = 0;
 	private int rushingTouchdowns;
 	private int fumbles;
 	private int receivingYards;
 	private int receptions;
 	private double yardsPerCatch;
 	private int receivingTouchdowns;
-	private int fieldgoalAttempts;
-	private int fieldgoalsMade;
-	private float fieldgoalPercent = 0;
-	private int punts;
-	private int puntYards;
-	private double puntAverage = 0;
-	
-	public OffensivePlayer() {
-		
-	}
-	
-	public OffensivePlayer(String position, String name, int age, int weight) {
-		
-	}	
-	
-	public OffensivePlayer(String position, String name) {
-		this.position = position;
-		this.name = name;
-	}
-	
+
 
 	
+	public OffensivePlayer(String name, String position, int age, int number, int weight, 
+			int passingTouchdowns, int interceptionsThrown, int passAttempts, int passCompletions, 
+			double completionPercent, int passingYards, int rushingYards, int rushingAttempts,
+			double yardsPerCarry, int rushingTouchdowns, int fumbles, int receivingYards, int receptions,
+			double yardsPerCatch, int receivingTouchdowns) {
+		this.setName(name);
+		this.setPosition(position);
+		this.setAge(age);
+		this.setNumber(number);
+		this.setWeight(weight);
+		this.setPassingTouchdowns(passingTouchdowns);
+		this.setInterceptionsThrown(interceptionsThrown);
+		this.setPassAttempts(passAttempts);
+		this.setPassCompletions(passCompletions);
+		this.setCompletionPercent(completionPercent);
+		this.setPassingYards(passingYards);
+		this.setRushingYards(rushingYards);
+		this.setRushingAttempts(rushingAttempts);
+		this.setYardsPerCarry(yardsPerCarry);
+		this.setRushingTouchdowns(rushingTouchdowns);
+		this.setFumbles(fumbles);
+		this.setReceivingYards(receivingYards);
+		this.setReceptions(receptions);
+		this.setYardsPerCatch(yardsPerCatch);
+		this.setReceivingTouchdowns(receivingTouchdowns);
+		
+	}
 	
+	public OffensivePlayer() {
+		super();
+	}
+	
+		
 	public void setPassingTouchdowns(int passingTouchdowns) {
 		this.passingTouchdowns = passingTouchdowns;
 	}
@@ -72,11 +87,11 @@ public class OffensivePlayer extends NFLPlayer{
 		return this.passCompletions;
 	}
 	
-	public void setCompletionPercent(float completionPercent) {
-		this.completionPercent = (passCompletions * 100 / passAttempts);
+	public void setCompletionPercent(double completionPercent) {
+		this.completionPercent = completionPercent;
 	}
 	
-	public float getCompletionPercent() {
+	public double getCompletionPercent() {
 		return completionPercent;
 	}
 	
@@ -96,11 +111,11 @@ public class OffensivePlayer extends NFLPlayer{
 		return rushingAttempts;
 	}
 	
-	public void setYardsPerCarry(float yardsPerCarry) {
+	public void setYardsPerCarry(double yardsPerCarry) {
 		this.yardsPerCarry = yardsPerCarry;
 	}
 	
-	public float getYardsPerCarry() {
+	public double getYardsPerCarry() {
 		return yardsPerCarry;
 	}
 	
@@ -160,53 +175,6 @@ public class OffensivePlayer extends NFLPlayer{
 		return this.receivingTouchdowns;
 	}
 	
-	public void setFieldgoalAttempts(int fieldgoalsAttempted) {
-		this.fieldgoalAttempts = fieldgoalsAttempted;
-	}
-	
-	public int getFieldgoalAttempts() {
-		return this.fieldgoalAttempts;
-	}
-	
-	public void setFieldgoalsMade(int fieldgoalsMade) {
-		this.fieldgoalsMade = fieldgoalsMade;
-	}
-	
-	public int getFieldgoalsMade() {
-		return this.fieldgoalsMade;
-	}
-	
-	public void setFieldgoalPercent(float fieldgoalPercent) {
-		this.fieldgoalPercent = fieldgoalsMade * 100 / fieldgoalAttempts;
-	}
-	
-	public float getFieldgoalPercent() {
-		return fieldgoalPercent;
-	}
-	
-	public void setPunts(int punts) {
-		this.punts = punts;
-	}
-	
-	public int getPunts() {
-		return this.punts;
-	}
-	
-	public void setPuntYards(int puntYards) {
-		this.puntYards = puntYards;
-	}
-	
-	public int getPuntYards() {
-		return this.puntYards;
-	}
-	
-	public void setPuntAverage(double puntAverage) {
-		this.puntAverage = puntYards / punts;
-	}
-	
-	public double getPuntAverage() {
-		return puntAverage;
-	}
 
 	@Override
 	public String celebrate() {
