@@ -7,10 +7,6 @@ package FinalProject.frontend;
 
 import FinalProject.frontend.ViewPlayers.PlayerTypes;
 
-/**
- *
- * @author proto
- */
 public class SelectOptions extends javax.swing.JPanel {
 
     /**

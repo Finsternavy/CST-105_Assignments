@@ -10,10 +10,6 @@ import FinalProject.backend.NFLPlayer;
 import FinalProject.backend.OffensivePlayer;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author proto
- */
 public class ViewPlayers extends javax.swing.JPanel {
 
     public static enum PlayerTypes {
@@ -123,57 +119,6 @@ public class ViewPlayers extends javax.swing.JPanel {
         this.availablePlayersTable.setModel(model);
     }
 
-    private void persistChanges() {
-        int rows = this.availablePlayersTable.getRowCount();
-        int columns = this.availablePlayersTable.getColumnCount();
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                Object value = this.availablePlayersTable.getModel().getValueAt(i, j);
-
-                switch (this.typeSelection) {
-                    case OFFENSE:
-                        this.persistOffenseType(i, j, value);
-                        break;
-                    case DEFENSE:
-                        this.persistDefenseType(i, j, value);
-                        break;
-                    case ALL:
-                        this.persistAllType(i, j, value);
-                        break;
-                    default:
-                        throw new AssertionError(this.typeSelection.name());
-                }
-
-            }
-        }
-    }
-
-    private void persistOffenseType(int index, int column, Object value) {
-        switch (column) {
-            case 0:
-                MainFrame.PLAYER_MANAGER.offensivePlayers.get(index).setName((String) value);
-                break;
-
-            case 1:
-                MainFrame.PLAYER_MANAGER.offensivePlayers.get(index).setPosition((String) value);
-                break;
-
-            case 2:
-
-                break;
-
-            // and so on
-        }
-    }
-
-    private void persistDefenseType(int index, int column, Object value) {
-
-    }
-
-    private void persistAllType(int index, int column, Object value) {
-
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -231,6 +176,7 @@ public class ViewPlayers extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        availablePlayersTable.setMinimumSize(new java.awt.Dimension(150, 64));
         jScrollPane1.setViewportView(availablePlayersTable);
 
         jScrollPane2.setViewportView(jScrollPane1);
@@ -269,12 +215,12 @@ public class ViewPlayers extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void changeViewedPlayersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeViewedPlayersButtonActionPerformed
-        this.persistChanges();
+        
         MainFrame.INSTANCE.changeState(MainFrame.ViewState.OPTIONS);
     }//GEN-LAST:event_changeViewedPlayersButtonActionPerformed
 
     private void returnToDraftboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnToDraftboardButtonActionPerformed
-        this.persistChanges();
+        
         MainFrame.INSTANCE.changeState(MainFrame.ViewState.DRAFTBOARD);
     }//GEN-LAST:event_returnToDraftboardButtonActionPerformed
 

@@ -5,10 +5,8 @@
  */
 package FinalProject.frontend;
 
-/**
- *
- * @author proto
- */
+import javax.swing.ImageIcon;
+
 public class WelcomeScreen extends javax.swing.JPanel {
 
     /**
@@ -17,7 +15,9 @@ public class WelcomeScreen extends javax.swing.JPanel {
     public WelcomeScreen() {
         initComponents();
     }
-
+    
+    ImageIcon pic = new ImageIcon("NFLDraftLogo.png");
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -5,12 +5,10 @@
  */
 package FinalProject.frontend;
 
+import FinalProject.backend.NFLPlayer;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author proto
- */
+
 public class DraftCompleted extends javax.swing.JPanel {
 
     /**
@@ -18,6 +16,14 @@ public class DraftCompleted extends javax.swing.JPanel {
      */
     public DraftCompleted() {
         initComponents();
+                StringBuilder sb = new StringBuilder();
+        MainFrame.PLAYER_MANAGER.currentRoster.forEach((NFLPlayer player) -> {
+        sb.append(player.getName());
+        sb.append(" ");
+        sb.append(player.celebrate());
+        sb.append ("\n");
+        });
+        CelebrationTextArea.setText(sb.toString());
     }
 
     /**
@@ -62,6 +68,7 @@ public class DraftCompleted extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+  
         
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

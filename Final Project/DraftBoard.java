@@ -7,15 +7,8 @@ package FinalProject.frontend;
 
 import FinalProject.backend.NFLPlayer;
 import javax.swing.table.DefaultTableModel;
-import FinalProject.backend.DefensivePlayer;
-import FinalProject.backend.OffensivePlayer;
-import javax.swing.table.DefaultTableModel;
-import FinalProject.frontend.ViewPlayers;
 
-/**
- *
- * @author proto
- */
+
 public class DraftBoard extends javax.swing.JPanel {
 
     /**
@@ -46,6 +39,7 @@ public class DraftBoard extends javax.swing.JPanel {
         AddPlayersButton = new javax.swing.JButton();
         FinalizeButton = new javax.swing.JButton();
         RemovePlayerButton = new javax.swing.JButton();
+        MyDraftBoardLabel = new javax.swing.JLabel();
 
         DraftedPlayersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,54 +75,59 @@ public class DraftBoard extends javax.swing.JPanel {
             }
         });
 
+        MyDraftBoardLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        MyDraftBoardLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MyDraftBoardLabel.setText("My Draft Board");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(RemovePlayerButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddPlayersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FinalizeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(MyDraftBoardLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
+                    .addComponent(RemovePlayerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AddPlayersButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FinalizeButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MyDraftBoardLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RemovePlayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AddPlayersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FinalizeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(125, 125, 125))
+                .addGap(144, 144, 144))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
     private void AddPlayersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPlayersButtonActionPerformed
         MainFrame.INSTANCE.changeState(MainFrame.ViewState.OPTIONS);
     }//GEN-LAST:event_AddPlayersButtonActionPerformed
 
     private void FinalizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizeButtonActionPerformed
         MainFrame.INSTANCE.changeState(MainFrame.ViewState.DRAFTEND);
-
     }//GEN-LAST:event_FinalizeButtonActionPerformed
 
-    private void RemovePlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemovePlayerButtonActionPerformed
+    private void RemovePlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {
         ((DefaultTableModel)DraftedPlayersTable.getModel()).removeRow(DraftedPlayersTable.getSelectedRow());
-    }//GEN-LAST:event_RemovePlayerButtonActionPerformed
-
+        int index = DraftedPlayersTable.getSelectedRow();
+        MainFrame.PLAYER_MANAGER.currentRoster.remove((NFLPlayer) MainFrame.PLAYER_MANAGER.currentRoster.get(index + 1));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddPlayersButton;
     private javax.swing.JTable DraftedPlayersTable;
     private javax.swing.JButton FinalizeButton;
+    private javax.swing.JLabel MyDraftBoardLabel;
     private javax.swing.JButton RemovePlayerButton;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

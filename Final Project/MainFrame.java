@@ -6,18 +6,15 @@
 package FinalProject.frontend;
 
 import FinalProject.backend.PlayerManager;
+import FinalProject.frontend.DraftCompleted;
 import FinalProject.frontend.ViewPlayers.PlayerTypes;
 import javax.swing.JPanel;
 
-/**
- *
- * @author proto
- */
+
 public class MainFrame extends javax.swing.JFrame {
 
     public static final MainFrame INSTANCE = new MainFrame();
 
-    public static final DraftCompleted DRAFT_COMPLETED = new DraftCompleted();
     public static final SelectOptions SELECT_OPTIONS = new SelectOptions();    
     public static final PlayerManager PLAYER_MANAGER = new PlayerManager();
        
